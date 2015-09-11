@@ -5,8 +5,15 @@ import org.junit.Test;
 public class CardTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testRank() {
+		Card c = new Card("TwoSpades");
+		assertEquals(2,c.getRank());
+	}
+	
+	@Test
+	public void testSuit() {
+		Card c = new Card("TwoSpades"); 
+		assertEquals("Spades",c.getSuit());
 	}
 
 }
