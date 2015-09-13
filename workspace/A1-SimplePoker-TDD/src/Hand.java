@@ -40,6 +40,7 @@ public class Hand {
 		return 0;
 	}
 	
+	
 	private int[] duplicates = new int[13];
 	private Card[] cards;
 	public String getPokerHand() {
@@ -50,10 +51,15 @@ public class Hand {
 			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
 				return "Royal Flush";
 		}
-		return "";
+		
 		//straight flush
 		
 		//4OAK
+		for(int i=0;i<duplicates.length;i++){
+			if(printDups(i) == 4){
+				return "4 of a Kind";
+			}
+		}
 		
 		//Full house
 		
@@ -68,5 +74,7 @@ public class Hand {
 		//1Pair
 		
 		//HighCard
+		
+		return "High Card";
 	} 
 }
