@@ -46,7 +46,6 @@ public class Hand {
 	public String getPokerHand() {
 		
 		//royal flush
-		System.out.println("" + duplicates[12] + duplicates[11]+duplicates[10]+duplicates[9]+duplicates[8]);
 		if(duplicates[12] == 1 && duplicates[11] == 1 && duplicates[10] == 1 && duplicates[9] == 1 && duplicates[8] == 1){
 			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
 				return "Royal Flush";
@@ -56,23 +55,28 @@ public class Hand {
 		
 		//4OAK
 		//3OAK
+		//Full House
 		for(int i=0;i<duplicates.length;i++){
 			if(printDups(i) == 4){
 				return "4 of a Kind";
 			}
 			
 			if(printDups(i) == 3){
+				for(int j=0;j<duplicates.length;j++){
+					if(printDups(j) == 2){
+						return "Full House";
+					}
+				}
 				return "3 of a Kind";
 			}
 		}
 		
-		//Full house
 		
 		//flush
+		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
+			return "Flush";
 		
 		//straight
-		
-		
 		
 		//2Pair
 		

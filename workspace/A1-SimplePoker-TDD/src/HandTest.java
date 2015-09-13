@@ -66,11 +66,39 @@ public class HandTest {
 		}
 		Card c = new Card("ThreeHearts");
 		cards[3]=c;
-		c = new Card("ThreeHearts");
+		c = new Card("FiveHearts");
 		cards[4]=c;
 		
 		Hand h = new Hand(cards);
 		assertEquals("3 of a Kind",h.getPokerHand());
+	}
+	
+	@Test
+	public void testFullHouse(){
+		Card[] cards = new Card[5];
+		for(int i=0;i<3;i++){
+			Card c = new Card("TwoSpades");
+			cards[i]=c;
+		}
+		Card c = new Card("ThreeHearts");
+		cards[3]=c;
+		c = new Card("ThreeHearts");
+		cards[4]=c;
+		
+		Hand h = new Hand(cards);
+		assertEquals("Full House",h.getPokerHand());
+	}
+	
+	public void testFlush(){
+		Card o = new Card("AceSpades");
+		Card t = new Card("ThreeSpades");
+		Card f = new Card("FiveSpades");
+		Card s = new Card("SevenSpades");
+		Card n = new Card("NineSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		assertEquals("Flush",h.getPokerHand());
 	}
 
 }
