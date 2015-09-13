@@ -11,5 +11,14 @@ public class PlayerTest {
 		
 		assertEquals("Matt",p.getId());
 	}
+	
+	@Test
+	public void testHand(){
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
+		Player p = new Player("Matt",h);
+		System.out.println(p.getHand().getHand());
+		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",p.getHand().getHand());
+	}
+
 
 }
