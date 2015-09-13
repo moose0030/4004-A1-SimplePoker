@@ -100,11 +100,18 @@ public class Hand {
 	
 		
 		//2Pair
-		
 		//1Pair
+		int pairs = 0;
+		for(int i=0;i<duplicates.length; i++){
+			System.out.println(pairs);
+			if(duplicates[i]==2)
+				pairs++;
+			if(pairs == 2)
+				return "Two Pair";
+		}
+		
 		
 		//HighCard
-		
 		return "High Card";
 	} 
 }

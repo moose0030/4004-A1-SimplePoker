@@ -126,5 +126,19 @@ public class HandTest {
 		
 		assertEquals("Straight",h.getPokerHand());
 	}
+	
+	@Test
+	public void test2Pair(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("FiveSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		
+		assertEquals("Two Pair",h.getPokerHand());
+	}
 
 }
