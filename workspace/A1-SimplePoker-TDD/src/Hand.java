@@ -55,9 +55,14 @@ public class Hand {
 		//straight flush
 		
 		//4OAK
+		//3OAK
 		for(int i=0;i<duplicates.length;i++){
 			if(printDups(i) == 4){
 				return "4 of a Kind";
+			}
+			
+			if(printDups(i) == 3){
+				return "3 of a Kind";
 			}
 		}
 		
@@ -67,7 +72,7 @@ public class Hand {
 		
 		//straight
 		
-		//3OAK
+		
 		
 		//2Pair
 		

@@ -56,5 +56,21 @@ public class HandTest {
 		Hand h = new Hand(cards);
 		assertEquals("4 of a Kind",h.getPokerHand());
 	}
+	
+	@Test
+	public void test3OAK(){
+		Card[] cards = new Card[5];
+		for(int i=0;i<3;i++){
+			Card c = new Card("TwoSpades");
+			cards[i]=c;
+		}
+		Card c = new Card("ThreeHearts");
+		cards[3]=c;
+		c = new Card("ThreeHearts");
+		cards[4]=c;
+		
+		Hand h = new Hand(cards);
+		assertEquals("3 of a Kind",h.getPokerHand());
+	}
 
 }
