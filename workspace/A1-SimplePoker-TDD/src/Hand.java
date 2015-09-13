@@ -52,6 +52,17 @@ public class Hand {
 		}
 		
 		//straight flush
+		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
+			int run = 0;
+			for(int i=0;i<duplicates.length;i++){
+				if(duplicates[i]==1)
+					run++;
+				else if(duplicates[i]==0)
+					run = 0;
+				if(run == 5)
+					return "Straight Flush";
+			}
+		}
 		
 		//4OAK
 		//3OAK

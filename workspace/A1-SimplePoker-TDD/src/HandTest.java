@@ -13,7 +13,6 @@ public class HandTest {
 		}
 		
 		Hand h = new Hand(cards);
-		System.out.println(h.getHand());
 		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",h.getHand());
 		
 	}
@@ -99,6 +98,20 @@ public class HandTest {
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
 		assertEquals("Flush",h.getPokerHand());
+	}
+	@Test
+	public void testStraightFlush(){
+		Card o = new Card("TwoSpades");
+		Card t = new Card("ThreeSpades");
+		Card f = new Card("FiveSpades");
+		Card s = new Card("FourSpades");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		
+		System.out.println(h.getPokerHand());
+		assertEquals("Straight Flush",h.getPokerHand());
 	}
 
 }
