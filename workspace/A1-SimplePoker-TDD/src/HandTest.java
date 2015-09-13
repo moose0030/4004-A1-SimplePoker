@@ -110,8 +110,21 @@ public class HandTest {
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
 		
-		System.out.println(h.getPokerHand());
 		assertEquals("Straight Flush",h.getPokerHand());
+	}
+	
+	@Test
+	public void testStraight(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("ThreeSpades");
+		Card f = new Card("FiveSpades");
+		Card s = new Card("FourSpades");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		
+		assertEquals("Straight",h.getPokerHand());
 	}
 
 }
