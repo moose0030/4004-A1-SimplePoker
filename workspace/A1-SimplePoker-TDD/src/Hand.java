@@ -110,6 +110,9 @@ public class Hand {
 				return "Two Pair";
 		}
 		
+		if(pairs == 1)
+			return "One Pair";
+		
 		
 		//HighCard
 		return "High Card";
