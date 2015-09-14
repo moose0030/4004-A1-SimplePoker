@@ -155,19 +155,6 @@ public class HandTest {
 		System.out.println(h.getPokerHand());
 		assertEquals("One Pair",h.getPokerHand());
 	}
-	@Test
-	public void testOnePairRank(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
-		System.out.println(h.getHandRank());
-		assertEquals(2,h.getHandRank());
-	}
 	
 	@Test
 	public void testPrint(){
@@ -181,6 +168,33 @@ public class HandTest {
 		Hand h = new Hand(cards);
 		
 		assertEquals("TwoHearts TwoSpades EightSpades FiveHearts SixSpades One Pair",h.print());
+	}
+	
+	@Test
+	public void testOnePairRank(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("EightSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		assertEquals(2,h.getHandRank());
+	}
+	
+	@Test
+	public void testHighCardRank(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("EightSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		
+		assertEquals(8,h.getHighCardRank());
 	}
 
 }
