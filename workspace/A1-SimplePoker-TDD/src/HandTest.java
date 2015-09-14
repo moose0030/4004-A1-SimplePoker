@@ -25,7 +25,7 @@ public class HandTest {
 		}
 		Hand h = new Hand(cards);
 		
-		assertEquals(5,h.printDups(2));
+		assertEquals(5,h.printCardArray(2));
 	}
 	@Test
 	public void testRoyalFlush(){
@@ -53,7 +53,7 @@ public class HandTest {
 		cards[4]=c;
 		
 		Hand h = new Hand(cards);
-		assertEquals("4 of a Kind",h.getPokerHand());
+		assertEquals("Four of a Kind",h.getPokerHand());
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class HandTest {
 		cards[4]=c;
 		
 		Hand h = new Hand(cards);
-		assertEquals("3 of a Kind",h.getPokerHand());
+		assertEquals("Three of a Kind",h.getPokerHand());
 	}
 	
 	@Test
@@ -137,7 +137,7 @@ public class HandTest {
 		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		
+		System.out.println(h.getPokerHand());
 		assertEquals("Two Pair",h.getPokerHand());
 	}
 	
@@ -152,9 +152,10 @@ public class HandTest {
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
 		
+		System.out.println(h.getPokerHand());
 		assertEquals("One Pair",h.getPokerHand());
 	}
-	
+	@Test
 	public void testOnePairRank(){
 		Card o = new Card("TwoHearts");
 		Card t = new Card("TwoSpades");
@@ -164,8 +165,8 @@ public class HandTest {
 		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		h.getPokerHand();
-		assertEquals("1",h.getHandRank());
+		System.out.println(h.getHandRank());
+		assertEquals(2,h.getHandRank());
 	}
 	
 	@Test

@@ -1,6 +1,10 @@
 
 public class Hand {
-
+	private int[] cardArray= new int[13];
+	private Card[] cards;
+	private int handRank = 0;
+	private int highCardRank =0;
+	
 	public Hand(Card[] c){
 		cards = c;
 		for(int i =0; i<c.length;i++){
@@ -20,6 +24,7 @@ public class Hand {
 			case "Ace":cardArray[12]++;break;
 			}
 		}
+		calculateHand();
 	}
 	
 	public String getHand(){
@@ -34,26 +39,20 @@ public class Hand {
 	}
 	
 	//Two is 0, Ace is 12
-	public int printDups(int n){
+	public int printCardArray(int n){
 		if(n>1 && n<(cardArray.length+3))
 		  return cardArray[n-2];
 		return 0;
 	}
 	
-	
-	private int[] cardArray= new int[13];
-	private Card[] cards;
-	private int handRank = 0;
-	private int highCardRank =0;
-	
 	//refactor each special hand?
-	public String getPokerHand() {
+	public void calculateHand() {
 		
 		//royal flush
 		if(cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1){
 			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
 				handRank = 10;
-				return "Royal Flush";
+				return;
 			}
 		}
 		
@@ -67,7 +66,7 @@ public class Hand {
 					run = 0;
 				if(run == 5){
 					handRank = 9;
-					return "Straight Flush";
+					return;
 				}
 			}
 		}
@@ -76,20 +75,20 @@ public class Hand {
 		//3OAK
 		//Full House
 		for(int i=0;i<cardArray.length;i++){
-			if(printDups(i) == 4){
+			if(printCardArray(i) == 4){
 				handRank = 8;
-				return "4 of a Kind";
+				return;
 			}
 			
-			if(printDups(i) == 3){
+			if(printCardArray(i) == 3){
 				for(int j=0;j<cardArray.length;j++){
-					if(printDups(j) == 2){
+					if(printCardArray(j) == 2){
 						handRank = 7;
-						return "Full House";
+						return;
 					}
 				}
 				handRank = 6;
-				return "3 of a Kind";
+				return;
 			}
 		}
 		
@@ -97,7 +96,7 @@ public class Hand {
 		//flush
 		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
 			handRank = 5;
-			return "Flush";
+			return;
 		}
 		
 		//straight
@@ -108,8 +107,8 @@ public class Hand {
 			else if(cardArray[i]==0)
 				run = 0;
 			if(run == 5){
-				handRank = 4;	
-				return "Straight";
+				handRank = 4;
+				return;
 			}
 		}
 	
@@ -121,19 +120,35 @@ public class Hand {
 			if(cardArray[i]==2)
 				pairs++;
 			if(pairs == 2){
-				handRank = 3;	
-				return "Two Pair";
+				handRank = 3;
+				return;
 			}
 		}
 		
 		if(pairs == 1)
 		{
 			handRank = 2;
-			return "One Pair";
+			return;
 		}
 		//HighCard
 		handRank = 1;
-		return "High Card";
+	}
+	
+	public String getPokerHand(){
+		switch(handRank){
+		case 1:return "High Card";
+		case 2:return "One Pair";
+		case 3:return "Two Pair";
+		case 4:return "Straight";
+		case 5:return "Flush";
+		case 6:return "Three of a Kind";
+		case 7:return "Full House";
+		case 8:return "Four of a Kind";
+		case 9:return "Straight Flush";
+		case 10:return "Royal Flush";
+		default: return "";
+		}
+		
 	}
 	
 	public String print(){
