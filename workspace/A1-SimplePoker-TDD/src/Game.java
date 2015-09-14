@@ -20,13 +20,13 @@ public class Game {
 			System.out.println("Please enter your id and your cards");
 			while(s.equals("")){
 				s = reader.nextLine();
-				//str = "Hello I'm your String";
-				//String[] splited = str.split("\\s+");
+				
 			}
+			String[] split = s.split("\\s+");
+			r.addPlayerHand(Integer.valueOf(split[0]),new Card[]{new Card(split[1]),new Card(split[2]),new Card(split[3]),new Card(split[4]),new Card(split[5])});
 			
 			
-			System.out.println(s);
-			r.addPlayerHand(i,new Card[]{new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades")});
+			
 		}
 		
 		for(int j=0; j<r.players.length;j++){
