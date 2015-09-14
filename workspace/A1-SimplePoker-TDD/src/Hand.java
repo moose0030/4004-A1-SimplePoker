@@ -5,19 +5,19 @@ public class Hand {
 		cards = c;
 		for(int i =0; i<c.length;i++){
 			switch(c[i].getRank()){
-			case "Two":duplicates[0]++;break;
-			case "Three":duplicates[1]++;break;
-			case "Four":duplicates[2]++;break;
-			case "Five":duplicates[3]++;break;
-			case "Six":duplicates[4]++;break;
-			case "Seven":duplicates[5]++;break;
-			case "Eight":duplicates[6]++;break;
-			case "Nine":duplicates[7]++;break;
-			case "Ten":duplicates[8]++;break;
-			case "Jack":duplicates[9]++;break;
-			case "Queen":duplicates[10]++;break;
-			case "King":duplicates[11]++;break;
-			case "Ace":duplicates[12]++;break;
+			case "Two":cardArray[0]++;break;
+			case "Three":cardArray[1]++;break;
+			case "Four":cardArray[2]++;break;
+			case "Five":cardArray[3]++;break;
+			case "Six":cardArray[4]++;break;
+			case "Seven":cardArray[5]++;break;
+			case "Eight":cardArray[6]++;break;
+			case "Nine":cardArray[7]++;break;
+			case "Ten":cardArray[8]++;break;
+			case "Jack":cardArray[9]++;break;
+			case "Queen":cardArray[10]++;break;
+			case "King":cardArray[11]++;break;
+			case "Ace":cardArray[12]++;break;
 			}
 		}
 	}
@@ -35,18 +35,18 @@ public class Hand {
 	
 	//Two is 0, Ace is 12
 	public int printDups(int n){
-		if(n>1 && n<(duplicates.length+3))
-		  return duplicates[n-2];
+		if(n>1 && n<(cardArray.length+3))
+		  return cardArray[n-2];
 		return 0;
 	}
 	
 	
-	private int[] duplicates = new int[13];
+	private int[] cardArray= new int[13];
 	private Card[] cards;
 	public String getPokerHand() {
 		
 		//royal flush
-		if(duplicates[12] == 1 && duplicates[11] == 1 && duplicates[10] == 1 && duplicates[9] == 1 && duplicates[8] == 1){
+		if(cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1){
 			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
 				return "Royal Flush";
 		}
@@ -54,10 +54,10 @@ public class Hand {
 		//straight flush
 		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
 			int run = 0;
-			for(int i=0;i<duplicates.length;i++){
-				if(duplicates[i]==1)
+			for(int i=0;i<cardArray.length;i++){
+				if(cardArray[i]==1)
 					run++;
-				else if(duplicates[i]==0)
+				else if(cardArray[i]==0)
 					run = 0;
 				if(run == 5)
 					return "Straight Flush";
@@ -67,13 +67,13 @@ public class Hand {
 		//4OAK
 		//3OAK
 		//Full House
-		for(int i=0;i<duplicates.length;i++){
+		for(int i=0;i<cardArray.length;i++){
 			if(printDups(i) == 4){
 				return "4 of a Kind";
 			}
 			
 			if(printDups(i) == 3){
-				for(int j=0;j<duplicates.length;j++){
+				for(int j=0;j<cardArray.length;j++){
 					if(printDups(j) == 2){
 						return "Full House";
 					}
@@ -89,10 +89,10 @@ public class Hand {
 		
 		//straight
 		int run = 0;
-		for(int i=0;i<duplicates.length;i++){
-			if(duplicates[i]==1)
+		for(int i=0;i<cardArray.length;i++){
+			if(cardArray[i]==1)
 				run++;
-			else if(duplicates[i]==0)
+			else if(cardArray[i]==0)
 				run = 0;
 			if(run == 5)
 				return "Straight";
@@ -102,9 +102,9 @@ public class Hand {
 		//2Pair
 		//1Pair
 		int pairs = 0;
-		for(int i=0;i<duplicates.length; i++){
+		for(int i=0;i<cardArray.length; i++){
 			System.out.println(pairs);
-			if(duplicates[i]==2)
+			if(cardArray[i]==2)
 				pairs++;
 			if(pairs == 2)
 				return "Two Pair";
