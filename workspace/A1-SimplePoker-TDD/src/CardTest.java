@@ -14,7 +14,6 @@ public class CardTest {
 	public void testSuit() {
 		Card c = new Card("TwoSpades"); 
 		assertEquals("Spades",c.getSuit());
-		//System.out.println(c.)
 	}
 
 }

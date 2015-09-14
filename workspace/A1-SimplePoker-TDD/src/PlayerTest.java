@@ -19,6 +19,13 @@ public class PlayerTest {
 		System.out.println(p.getHand().getHand());
 		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",p.getHand().getHand());
 	}
+	
+	@Test
+	public void testStringConstuctor(){
+		String[] s = new String[]{"0", "TwoSpades", "TwoSpades", "TwoSpades", "TwoSpades", "TwoSpades"};
+		Player p = new Player(s);
+		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",p.getHand().getHand());
+	}
 
 
 }

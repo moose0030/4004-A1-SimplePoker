@@ -1,33 +1,36 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Game {
 
-	
+	static Round r;
 	public static void main(String[] args) {
 		
 		System.out.println("How many players are playing this round?");
 		int num = 0;
-		while(num < 2){
-			try {
-				System.in.read();
-				num = 2;
-			} 
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		Scanner reader = new Scanner(System.in);
+		while(num < 2 || num > 4){
+			num = reader.nextInt();
 		}
 		
+		r = new Round(num);
+		
 		for(int i=0; i<num;i++){
-			//while()
+			String s = "";
 			System.out.println("Please enter your id and your cards");
-			try {
-				System.in.read();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			while(s.equals("")){
+				s = reader.nextLine();
+				//str = "Hello I'm your String";
+				//String[] splited = str.split("\\s+");
 			}
 			
+			
+			System.out.println(s);
+			r.addPlayerHand(i,new Card[]{new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades")});
 		}
+		
+		for(int j=0; j<r.players.length;j++){
+		System.out.println(r.players[j].getHand().getHand());	
+	}
 	}
 }
