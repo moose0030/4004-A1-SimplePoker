@@ -13,7 +13,7 @@ public class HandTest {
 		}
 		
 		Hand h = new Hand(cards);
-		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",h.getHand());
+		assertEquals("TwoSpades TwoSpades TwoSpades TwoSpades TwoSpades",h.getHand());
 		
 	}
 	@Test
@@ -153,6 +153,20 @@ public class HandTest {
 		Hand h = new Hand(cards);
 		
 		assertEquals("One Pair",h.getPokerHand());
+	}
+	
+	@Test
+	public void testPrint(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("EightSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		
+		assertEquals("TwoHearts TwoSpades EightSpades FiveHearts SixSpades One Pair",h.print());
 	}
 
 }

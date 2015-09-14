@@ -28,7 +28,7 @@ public class Hand {
 			value += cards[i].getRank();
 			value += cards[i].getSuit();
 			if(i<cards.length-1)
-				value += ",";
+				value += " ";
 		}
 		return value;
 	}
@@ -116,5 +116,10 @@ public class Hand {
 		
 		//HighCard
 		return "High Card";
-	} 
+	}
+	
+	public String print(){
+		return "" + getHand() + " " + getPokerHand();
+		
+	}
 }
