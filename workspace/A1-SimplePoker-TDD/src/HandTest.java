@@ -155,6 +155,19 @@ public class HandTest {
 		assertEquals("One Pair",h.getPokerHand());
 	}
 	
+	public void testOnePairRank(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("EightSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		h.getPokerHand();
+		assertEquals("1",h.getHandRank());
+	}
+	
 	@Test
 	public void testPrint(){
 		Card o = new Card("TwoHearts");

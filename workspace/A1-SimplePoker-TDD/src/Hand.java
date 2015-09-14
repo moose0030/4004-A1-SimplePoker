@@ -140,4 +140,8 @@ public class Hand {
 		return "" + getHand() + " " + getPokerHand();
 		
 	}
+
+	public int getHandRank() {
+		return handRank;
+	}
 }
