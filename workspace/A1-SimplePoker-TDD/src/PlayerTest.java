@@ -8,7 +8,6 @@ public class PlayerTest {
 	public void testId(){
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		Player p = new Player("Matt",h);
-		
 		assertEquals("Matt",p.getId());
 	}
 	
@@ -16,7 +15,6 @@ public class PlayerTest {
 	public void testHand(){
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		Player p = new Player("Matt",h);
-		System.out.println(p.getHand().getHand());
 		assertEquals("TwoSpades,TwoSpades,TwoSpades,TwoSpades,TwoSpades",p.getHand().getHand());
 	}
 	

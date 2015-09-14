@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
@@ -37,6 +36,7 @@ public class Game {
 			playAgain = true;
 				
 		}
+		reader.close();
 		System.out.println("Game Over");
 	}
 }

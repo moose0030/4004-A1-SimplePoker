@@ -43,12 +43,18 @@ public class Hand {
 	
 	private int[] cardArray= new int[13];
 	private Card[] cards;
+	private int handRank = 0;
+	private int highCardRank =0;
+	
+	//refactor each special hand?
 	public String getPokerHand() {
 		
 		//royal flush
 		if(cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1){
-			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
+			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
+				handRank = 10;
 				return "Royal Flush";
+			}
 		}
 		
 		//straight flush
@@ -59,8 +65,10 @@ public class Hand {
 					run++;
 				else if(cardArray[i]==0)
 					run = 0;
-				if(run == 5)
+				if(run == 5){
+					handRank = 9;
 					return "Straight Flush";
+				}
 			}
 		}
 		
@@ -69,23 +77,28 @@ public class Hand {
 		//Full House
 		for(int i=0;i<cardArray.length;i++){
 			if(printDups(i) == 4){
+				handRank = 8;
 				return "4 of a Kind";
 			}
 			
 			if(printDups(i) == 3){
 				for(int j=0;j<cardArray.length;j++){
 					if(printDups(j) == 2){
+						handRank = 7;
 						return "Full House";
 					}
 				}
+				handRank = 6;
 				return "3 of a Kind";
 			}
 		}
 		
 		
 		//flush
-		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit())
+		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
+			handRank = 5;
 			return "Flush";
+		}
 		
 		//straight
 		int run = 0;
@@ -94,8 +107,10 @@ public class Hand {
 				run++;
 			else if(cardArray[i]==0)
 				run = 0;
-			if(run == 5)
+			if(run == 5){
+				handRank = 4;	
 				return "Straight";
+			}
 		}
 	
 		
@@ -103,18 +118,21 @@ public class Hand {
 		//1Pair
 		int pairs = 0;
 		for(int i=0;i<cardArray.length; i++){
-			System.out.println(pairs);
 			if(cardArray[i]==2)
 				pairs++;
-			if(pairs == 2)
+			if(pairs == 2){
+				handRank = 3;	
 				return "Two Pair";
+			}
 		}
 		
 		if(pairs == 1)
+		{
+			handRank = 2;
 			return "One Pair";
-		
-		
+		}
 		//HighCard
+		handRank = 1;
 		return "High Card";
 	}
 	

@@ -17,8 +17,10 @@ public class RoundTest {
 	public void testBetterHand(){
 		Round r = new Round(2);
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
-		Hand h2 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("TwoSpades")});
-		assertEquals("Flush",r.betterHand(h1,h2));	
+		Hand h2 = new Hand(new Card[]{new Card("TwoSpades"),new Card("AceSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("TwoSpades")});
+		Hand[] hs = new Hand[]{h1,h2}; 
+		System.out.println("Actual " + r.betterHand(hs));
+		assertEquals("Full House",r.betterHand(hs));	
 	}
 
 }
