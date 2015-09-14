@@ -193,7 +193,7 @@ public class HandTest {
 		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		
+		System.out.println(h.getHighCardRank());
 		assertEquals(8,h.getHighCardRank());
 	}
 

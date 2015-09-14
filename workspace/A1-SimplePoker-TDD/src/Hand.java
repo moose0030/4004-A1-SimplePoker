@@ -159,4 +159,26 @@ public class Hand {
 	public int getHandRank() {
 		return handRank;
 	}
+
+	/*
+	public int getHighCardRank() {
+		switch(getHandRank()){
+		case 1: break;
+		}
+		
+		return 0;
+	}*/
+	
+	public int getHighCardRank(){
+		for(int i=cardArray.length-1;i>0;i--)
+		{
+			if(cardArray[i]==1){
+				highCardRank =(i+2);
+				return highCardRank;
+			}
+		}
+		return 0;
+			
+		
+	}
 }
