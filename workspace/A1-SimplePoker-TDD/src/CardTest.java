@@ -15,5 +15,12 @@ public class CardTest {
 		Card c = new Card("TwoSpades"); 
 		assertEquals("Spades",c.getSuit());
 	}
+	
+	@Test
+	public void testCardRank(){
+		Card c = new Card("TwoSpades");
+		assertEquals(2,c.getCardRank());
+		
+	}
 
 }
