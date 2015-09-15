@@ -196,5 +196,19 @@ public class HandTest {
 		System.out.println(h.getHighCardRank());
 		assertEquals(8,h.getHighCardRank());
 	}
+	
+	@Test
+	public void testSorted(){
+		Card o = new Card("TwoHearts");
+		Card t = new Card("TwoSpades");
+		Card f = new Card("EightSpades");
+		Card s = new Card("FiveHearts");
+		Card n = new Card("SixSpades");
+		
+		Card[] cards ={o,t,f,s,n};
+		Hand h = new Hand(cards);
+		h.sortCardsDesc();
+		assertEquals("EightSpades SixSpades FiveHearts TwoHearts TwoSpades One Pair",h.print());
+	}
 
 }
