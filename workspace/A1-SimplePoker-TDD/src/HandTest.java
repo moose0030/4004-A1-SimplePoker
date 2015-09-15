@@ -134,10 +134,8 @@ public class HandTest {
 		Card f = new Card("FiveSpades");
 		Card s = new Card("FiveHearts");
 		Card n = new Card("SixSpades");
-		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		System.out.println(h.getPokerHand());
 		assertEquals("Two Pair",h.getPokerHand());
 	}
 	
@@ -148,11 +146,8 @@ public class HandTest {
 		Card f = new Card("EightSpades");
 		Card s = new Card("FiveHearts");
 		Card n = new Card("SixSpades");
-		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		
-		System.out.println(h.getPokerHand());
 		assertEquals("One Pair",h.getPokerHand());
 	}
 	
@@ -190,10 +185,8 @@ public class HandTest {
 		Card f = new Card("EightSpades");
 		Card s = new Card("FiveHearts");
 		Card n = new Card("SixSpades");
-		
 		Card[] cards ={o,t,f,s,n};
 		Hand h = new Hand(cards);
-		System.out.println(h.getHighCardRank());
 		assertEquals(8,h.getHighCardRank());
 	}
 	
