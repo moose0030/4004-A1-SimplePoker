@@ -1,9 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-public class Hand {
+public class Hand implements Comparable<Hand>{
 	private int[] cardArray= new int[13];
 	private Card[] cards;
 	private int handRank = 0;
@@ -185,15 +181,6 @@ public class Hand {
 		return handRank;
 	}
 
-	/*
-	public int getHighCardRank() {
-		switch(getHandRank()){
-		case 1: break;
-		}
-		
-		return 0;
-	}*/
-	
 	public int getHighCardRank(){	
 		for(int i=cardArray.length-1;i>0;i--)
 		{
@@ -210,5 +197,10 @@ public class Hand {
 		for(int i=0;i<cards.length;i++){
 			System.out.println(cards[i].getCardRank());
 		}	
+	}
+
+	@Override
+	public int compareTo(Hand o) {
+		return Integer.compare(this.handRank, o.handRank);
 	}
 }
