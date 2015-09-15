@@ -45,18 +45,83 @@ public class Hand {
 		return 0;
 	}
 	
-	//refactor each special hand?
 	public void calculateHand() {
-		
-		//royal flush
-		if(cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1){
-			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
-				handRank = 10;
-				return;
+		if(isRoyalFlush()){
+			return;
+		}
+		if(isStraightFlush()){
+			return;
+		}
+		if(isOAKFullHouse()){
+			return;
+		}
+		if(isFlush()){	
+			return;
+		}
+		if(isStraight()){
+			return;
+		}
+		if(isPairs()){
+			return;
+		}		
+		handRank = 1;
+	}
+	
+	private boolean isPairs() {
+		int pairs = 0;
+		for(int i=0;i<cardArray.length; i++){
+			if(cardArray[i]==2)
+				pairs++;
+			if(pairs == 2){
+				handRank = 3;
+				return true;
 			}
 		}
-		
-		//straight flush
+		if(pairs == 1)
+		{
+			handRank = 2;
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isOAKFullHouse() {
+		for(int i=0;i<cardArray.length;i++){
+			if(printCardArray(i) == 4){
+				handRank = 8;
+				return true;
+			}
+			
+			if(printCardArray(i) == 3){
+				for(int j=0;j<cardArray.length;j++){
+					if(printCardArray(j) == 2){
+						handRank = 7;
+						return true;
+					}
+				}
+				handRank = 6;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isStraight(){
+		int run = 0;
+		for(int i=0;i<cardArray.length;i++){
+			if(cardArray[i]==1)
+				run++;
+			else if(cardArray[i]==0)
+				run = 0;
+			if(run == 5){
+				handRank=4;
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean isStraightFlush() {
 		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
 			int run = 0;
 			for(int i=0;i<cardArray.length;i++){
@@ -66,72 +131,29 @@ public class Hand {
 					run = 0;
 				if(run == 5){
 					handRank = 9;
-					return;
+					return true;
 				}
 			}
 		}
-		
-		//4OAK
-		//3OAK
-		//Full House
-		for(int i=0;i<cardArray.length;i++){
-			if(printCardArray(i) == 4){
-				handRank = 8;
-				return;
-			}
-			
-			if(printCardArray(i) == 3){
-				for(int j=0;j<cardArray.length;j++){
-					if(printCardArray(j) == 2){
-						handRank = 7;
-						return;
-					}
-				}
-				handRank = 6;
-				return;
+		return false;
+	}
+
+	private boolean isRoyalFlush(){
+		if(cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1){
+			if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
+				handRank = 10;
+				return true;
 			}
 		}
-		
-		
-		//flush
+		return false;
+	}
+	
+	private boolean isFlush(){
 		if(cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit() && cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()){
 			handRank = 5;
-			return;
+			return true;
 		}
-		
-		//straight
-		int run = 0;
-		for(int i=0;i<cardArray.length;i++){
-			if(cardArray[i]==1)
-				run++;
-			else if(cardArray[i]==0)
-				run = 0;
-			if(run == 5){
-				handRank = 4;
-				return;
-			}
-		}
-	
-		
-		//2Pair
-		//1Pair
-		int pairs = 0;
-		for(int i=0;i<cardArray.length; i++){
-			if(cardArray[i]==2)
-				pairs++;
-			if(pairs == 2){
-				handRank = 3;
-				return;
-			}
-		}
-		
-		if(pairs == 1)
-		{
-			handRank = 2;
-			return;
-		}
-		//HighCard
-		handRank = 1;
+		return false;
 	}
 	
 	public String getPokerHand(){
