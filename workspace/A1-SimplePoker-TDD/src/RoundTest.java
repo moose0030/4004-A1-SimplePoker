@@ -12,7 +12,6 @@ public class RoundTest {
 		}
 		assertEquals(2,r.players.length);
 	}
-	
 	@Test
 	public void testBetterHand(){
 		Round r = new Round(2);

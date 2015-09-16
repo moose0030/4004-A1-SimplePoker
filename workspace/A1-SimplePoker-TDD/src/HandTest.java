@@ -6,191 +6,74 @@ public class HandTest {
 
 	@Test
 	public void testGetHand(){
-		Card[] cards = new Card[5];
-		for(int i=0;i<5;i++){
-			Card c = new Card("TwoSpades");
-			cards[i]=c;
-		}
-		
-		Hand h = new Hand(cards);
-		assertEquals("TwoSpades TwoSpades TwoSpades TwoSpades TwoSpades",h.getHand());
-		
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
+		assertEquals("TwoSpades TwoSpades TwoSpades TwoSpades TwoSpades",h.getHand());	
 	}
 	@Test
 	public void testNumberTwos(){	
-		Card[] cards = new Card[5];
-		for(int i=0;i<5;i++){
-			Card c = new Card("TwoSpades");
-			cards[i]=c;
-		}
-		Hand h = new Hand(cards);
-		
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		assertEquals(5,h.printCardArray(2));
 	}
 	@Test
 	public void testRoyalFlush(){
-		Card a = new Card("AceSpades");
-		Card k = new Card("KingSpades");
-		Card q = new Card("QueenSpades");
-		Card j = new Card("JackSpades");
-		Card t = new Card("TenSpades");
-		
-		Card[] cards = {a,k,q,j,t};
-		
-		
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("AceSpades"),new Card("QueenSpades"),new Card("KingSpades"),new Card("JackSpades"),new Card("TenSpades")});
 		assertEquals("Royal Flush",h.getPokerHand());
 	}
-	
 	@Test
 	public void test4OAK(){
-		Card[] cards = new Card[5];
-		for(int i=0;i<4;i++){
-			Card c = new Card("TwoSpades");
-			cards[i]=c;
-		}
-		Card c = new Card("ThreeHearts");
-		cards[4]=c;
-		
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("ThreeHearts"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		assertEquals("Four of a Kind",h.getPokerHand());
 	}
-	
 	@Test
 	public void test3OAK(){
-		Card[] cards = new Card[5];
-		for(int i=0;i<3;i++){
-			Card c = new Card("TwoSpades");
-			cards[i]=c;
-		}
-		Card c = new Card("ThreeHearts");
-		cards[3]=c;
-		c = new Card("FiveHearts");
-		cards[4]=c;
-		
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("ThreeHearts"),new Card("KingClubs"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		assertEquals("Three of a Kind",h.getPokerHand());
 	}
-	
 	@Test
 	public void testFullHouse(){
-		Card[] cards = new Card[5];
-		for(int i=0;i<3;i++){
-			Card c = new Card("TwoSpades");
-			cards[i]=c;
-		}
-		Card c = new Card("ThreeHearts");
-		cards[3]=c;
-		c = new Card("ThreeHearts");
-		cards[4]=c;
-		
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("ThreeHearts"),new Card("ThreeHearts"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		assertEquals("Full House",h.getPokerHand());
 	}
-	
+	@Test
 	public void testFlush(){
-		Card o = new Card("AceSpades");
-		Card t = new Card("ThreeSpades");
-		Card f = new Card("FiveSpades");
-		Card s = new Card("SevenSpades");
-		Card n = new Card("NineSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("AceSpades"),new Card("TwoSpades"),new Card("FourSpades"),new Card("SevenSpades"),new Card("TenSpades")});
 		assertEquals("Flush",h.getPokerHand());
 	}
 	@Test
 	public void testStraightFlush(){
-		Card o = new Card("TwoSpades");
-		Card t = new Card("ThreeSpades");
-		Card f = new Card("FiveSpades");
-		Card s = new Card("FourSpades");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
-		
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("ThreeSpades"),new Card("FiveSpades"),new Card("FourSpades"),new Card("SixSpades")});
 		assertEquals("Straight Flush",h.getPokerHand());
 	}
-	
 	@Test
 	public void testStraight(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("ThreeSpades");
-		Card f = new Card("FiveSpades");
-		Card s = new Card("FourSpades");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
-		
+		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("ThreeSpades"),new Card("FiveSpades"),new Card("FourSpades"),new Card("SixSpades")});
 		assertEquals("Straight",h.getPokerHand());
 	}
-	
 	@Test
 	public void test2Pair(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("FiveSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoClubs"),new Card("ThreeSpades"),new Card("ThreeHearts"),new Card("AceHearts")});
 		assertEquals("Two Pair",h.getPokerHand());
 	}
-	
 	@Test
 	public void test1Pair(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("AceHearts"),new Card("AceDiamonds"),new Card("ThreeClubs"),new Card("FiveHearts"),new Card("SevenClubs")});
 		assertEquals("One Pair",h.getPokerHand());
 	}
-	
 	@Test
 	public void testPrint(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
-		
+		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
 		assertEquals("TwoHearts TwoSpades EightSpades FiveHearts SixSpades One Pair",h.print());
 	}
-	
 	@Test
 	public void testOnePairRank(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
 		assertEquals(2,h.getHandRank());
 	}
-	
 	@Test
 	public void testHighCardRank(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
 		assertEquals(8,h.getHighCardRank());
 	}
-	
-	
 	@Test
 	public void testHighCardRank2(){
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
@@ -200,18 +83,8 @@ public class HandTest {
 	}
 	@Test
 	public void testSorted(){
-		Card o = new Card("TwoHearts");
-		Card t = new Card("TwoSpades");
-		Card f = new Card("EightSpades");
-		Card s = new Card("FiveHearts");
-		Card n = new Card("SixSpades");
-		
-		Card[] cards ={o,t,f,s,n};
-		Hand h = new Hand(cards);
+		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
 		h.sortCardsDesc();
 		assertEquals("EightSpades SixSpades FiveHearts TwoHearts TwoSpades One Pair",h.print());
 	}
-	
-	
-
 }

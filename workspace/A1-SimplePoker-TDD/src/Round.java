@@ -16,7 +16,6 @@ public class Round {
 		String s="";
 		for(Hand h: hands){
 			s+=h.getHand() + " " + h.getPokerHand() + " " +h.getHandRank() + " " + String.valueOf(h.getHighCardRank()) + "\n";
-			
 		}
 		s = s.trim();
 		return s;

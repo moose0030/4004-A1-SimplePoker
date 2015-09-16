@@ -20,7 +20,6 @@ public class CardTest {
 	public void testCardRank(){
 		Card c = new Card("TwoSpades");
 		assertEquals(2,c.getCardRank());
-		
 	}
 
 }
