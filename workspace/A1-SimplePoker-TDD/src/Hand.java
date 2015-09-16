@@ -25,7 +25,7 @@ public class Hand implements Comparable<Hand>{
 	}
 	
 	//Two is 0, Ace is 12
-	public int printCardArray(int n){
+	public int getCardArrayAtIndex(int n){
 		if(n>1 && n<(cardArray.length+3))
 		  return cardArray[n-2];
 		return 0;
@@ -73,14 +73,14 @@ public class Hand implements Comparable<Hand>{
 
 	private boolean isOAKFullHouse() {
 		for(int i=0;i<cardArray.length;i++){
-			if(printCardArray(i) == 4){
+			if(getCardArrayAtIndex(i) == 4){
 				handRank = 8;
 				return true;
 			}
 			
-			if(printCardArray(i) == 3){
+			if(getCardArrayAtIndex(i) == 3){
 				for(int j=0;j<cardArray.length;j++){
-					if(printCardArray(j) == 2){
+					if(getCardArrayAtIndex(j) == 2){
 						handRank = 7;
 						return true;
 					}
@@ -155,8 +155,7 @@ public class Hand implements Comparable<Hand>{
 		case 9:return "Straight Flush";
 		case 10:return "Royal Flush";
 		default: return "";
-		}
-		
+		}	
 	}
 	
 	public String print(){

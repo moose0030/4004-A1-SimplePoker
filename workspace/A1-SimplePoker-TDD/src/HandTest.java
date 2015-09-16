@@ -12,7 +12,7 @@ public class HandTest {
 	@Test
 	public void testNumberTwos(){	
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
-		assertEquals(5,h.printCardArray(2));
+		assertEquals(5,h.getCardArrayAtIndex(2));
 	}
 	@Test
 	public void testRoyalFlush(){
