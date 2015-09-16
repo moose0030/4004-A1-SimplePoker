@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class Round {
 	Player[] players;
 	
@@ -19,6 +18,5 @@ public class Round {
 		}
 		s = s.trim();
 		return s;
-	}
-	
+	}	
 }

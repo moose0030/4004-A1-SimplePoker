@@ -8,8 +8,15 @@ public class Player {
 	}
 	
 	public Player(String[] strings){
-		id = strings[0];
-		hand = new Hand(new Card[]{new Card(strings[1]),new Card(strings[2]),new Card(strings[3]),new Card(strings[4]),new Card(strings[5])});
+		if(strings.length == 6){
+			id = strings[0];
+			hand = new Hand(new Card[]{new Card(strings[1]),new Card(strings[2]),new Card(strings[3]),new Card(strings[4]),new Card(strings[5])});
+		}
+		else
+		{
+			id = null;
+			hand = null;
+		}
 	}
 
 	public String getId() {
