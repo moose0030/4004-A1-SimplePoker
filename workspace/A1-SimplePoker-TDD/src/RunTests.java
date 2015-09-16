@@ -8,6 +8,7 @@ public class RunTests {
       for (Failure failure : result.getFailures()) {
          System.out.println(failure.toString());
       }
-      System.out.println(result.wasSuccessful());
+
+      System.out.println("Tests were successful: " + String.valueOf(result.wasSuccessful()).toUpperCase());
    }
 } 

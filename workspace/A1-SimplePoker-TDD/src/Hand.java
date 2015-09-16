@@ -195,10 +195,7 @@ public class Hand implements Comparable<Hand>{
 	
 	public void sortCardsDesc(){
 		Arrays.sort(cards);
-		for(int i=0;i<cards.length;i++){
-			System.out.println(cards[i].getCardRank());
-		}	
-	}
+	}		
 
 	@Override
 	public int compareTo(Hand o){
