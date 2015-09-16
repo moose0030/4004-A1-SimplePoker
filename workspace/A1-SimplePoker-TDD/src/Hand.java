@@ -184,10 +184,11 @@ public class Hand implements Comparable<Hand>{
 	public int getHighCardRank(){	
 		for(int i=cardArray.length-1;i>0;i--)
 		{
-			if(cardArray[i]==1){
-				highCardRank =(i+2);
+			if(cardArray[i]!=0){
+				highCardRank = (i+2);
 				return highCardRank;
 			}
+			
 		}
 		return 0;
 	}
@@ -200,7 +201,12 @@ public class Hand implements Comparable<Hand>{
 	}
 
 	@Override
-	public int compareTo(Hand o) {
-		return Integer.compare(this.handRank, o.handRank);
+	public int compareTo(Hand o){
+		int n = Integer.compare(o.handRank,this.handRank);
+		if(n == 0)
+		{
+			return Integer.compare(o.getHighCardRank(), this.getHighCardRank());
+		}
+		return n;
 	}
 }
