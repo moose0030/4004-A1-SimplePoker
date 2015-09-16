@@ -8,21 +8,7 @@ public class Hand implements Comparable<Hand>{
 	public Hand(Card[] c){
 		cards = c;
 		for(int i =0; i<c.length;i++){
-			switch(c[i].getRank()){
-			case "Two":  cardArray[0]++; break;
-			case "Three":cardArray[1]++; break;
-			case "Four": cardArray[2]++; break;
-			case "Five": cardArray[3]++; break;
-			case "Six":  cardArray[4]++; break;
-			case "Seven":cardArray[5]++; break;
-			case "Eight":cardArray[6]++; break;
-			case "Nine": cardArray[7]++; break;
-			case "Ten":  cardArray[8]++; break;
-			case "Jack": cardArray[9]++; break;
-			case "Queen":cardArray[10]++;break;
-			case "King": cardArray[11]++;break;
-			case "Ace":  cardArray[12]++;break;
-			}
+			cardArray[(c[i].getCardRank()-2)]++;
 		}
 		calculateHand();
 	}
