@@ -4,7 +4,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
    CardTest.class,
    HandTest.class,
-   PlayerTest.class,
    RoundTest.class,
    GameTest.class
 })

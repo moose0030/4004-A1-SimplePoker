@@ -1,13 +1,13 @@
 import java.util.Arrays;
 public class Round {
-	Player[] players;
+	Hand[] players;
 	
 	public Round(int n){
-		players = new Player[n];
+		players = new Hand[n];
 	}
 	
 	public void addPlayerHand(int id, Card[] cards){
-		players[id] = new Player(String.valueOf(id),new Hand(cards));
+		players[id] = new Hand(cards,id);
 	}
 	
 	public String betterHand(Hand[] hands){
