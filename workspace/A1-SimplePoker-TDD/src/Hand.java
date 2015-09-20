@@ -4,9 +4,19 @@ public class Hand implements Comparable<Hand>{
 	private Card[] cards;
 	private int handRank = 0;
 	private int highCardRank =0;
+	private int id;
 	
 	public Hand(Card[] c){
 		cards = c;
+		for(int i =0; i<c.length;i++){
+			cardArray[(c[i].getCardRank()-2)]++;
+		}
+		calculateHand();
+	}
+	
+	public Hand(Card[] c, int n){
+		cards = c;
+		id = n;
 		for(int i =0; i<c.length;i++){
 			cardArray[(c[i].getCardRank()-2)]++;
 		}
@@ -22,6 +32,9 @@ public class Hand implements Comparable<Hand>{
 				value += " ";
 		}
 		return value;
+	}
+	public int getID(){
+		return id;
 	}
 	
 	//Two is 0, Ace is 12

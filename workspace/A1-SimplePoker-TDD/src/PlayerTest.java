@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-	@Test
+	/*@Test
 	public void testId(){
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		Player p = new Player("Matt",h);
@@ -24,6 +24,7 @@ public class PlayerTest {
 		Player p = new Player(s);
 		assertEquals("TwoSpades TwoSpades TwoSpades TwoSpades TwoSpades",p.getHand().getHand());
 	}
+	*/
 
 
 }

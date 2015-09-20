@@ -21,9 +21,7 @@ public class Game {
 			String[] split = s.split("\\s+");
 			r.addPlayerHand(Integer.valueOf(split[0]),new Card[]{new Card(split[1]),new Card(split[2]),new Card(split[3]),new Card(split[4]),new Card(split[5])});
 		}		
-		for(int j=0; j<r.players.length;j++){
-			System.out.println(r.players[j].getHand().getPokerHand());	
-		}
+		r.betterHand(r.);
 		System.out.println("Would you like to play another round? y/n");
 		if(reader.nextLine().equals("y"))
 			playAgain = true;

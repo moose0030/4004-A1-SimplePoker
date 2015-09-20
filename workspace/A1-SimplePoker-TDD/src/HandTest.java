@@ -10,6 +10,11 @@ public class HandTest {
 		assertEquals("TwoSpades TwoSpades TwoSpades TwoSpades TwoSpades",h.getHand());	
 	}
 	@Test
+	public void testGetID(){
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")},2);
+		assertEquals(2,h.getID());	
+	}
+	@Test
 	public void testNumberTwos(){	
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
 		assertEquals(5,h.getCardArrayAtIndex(2));

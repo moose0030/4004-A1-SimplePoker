@@ -1,4 +1,4 @@
-public class Player {
+/*public class Player {
 	String id;
 	Hand hand;
 	
@@ -28,3 +28,4 @@ public class Player {
 	}
 	
 }
+*/
