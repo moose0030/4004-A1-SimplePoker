@@ -4,7 +4,7 @@ public class Hand implements Comparable<Hand>{
 	private Card[] cards;
 	private int handRank = 0;
 	private int highCardRank =0;
-	private int id;
+	private String id;
 	
 	public Hand(Card[] c){
 		cards = c;
@@ -14,9 +14,9 @@ public class Hand implements Comparable<Hand>{
 		calculateHand();
 	}
 	
-	public Hand(Card[] c, int n){
+	public Hand(Card[] c, String s){
 		cards = c;
-		id = n;
+		id = s;
 		for(int i =0; i<c.length;i++){
 			cardArray[(c[i].getCardRank()-2)]++;
 		}
@@ -33,7 +33,7 @@ public class Hand implements Comparable<Hand>{
 		}
 		return value;
 	}
-	public int getID(){
+	public String getID(){
 		return id;
 	}
 	

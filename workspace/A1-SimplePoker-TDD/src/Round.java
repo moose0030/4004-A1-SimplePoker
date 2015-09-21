@@ -6,8 +6,8 @@ public class Round {
 		players = new Hand[n];
 	}
 	
-	public void addPlayerHand(int id, Card[] cards){
-		players[id] = new Hand(cards,id);
+	public void addPlayerHand(int i,String s, Card[] cards){
+		players[i] = new Hand(cards,s);
 	}
 	
 	public String betterHand(Hand[] hands){

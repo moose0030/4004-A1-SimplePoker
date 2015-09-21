@@ -11,8 +11,8 @@ public class HandTest {
 	}
 	@Test
 	public void testGetID(){
-		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")},2);
-		assertEquals(2,h.getID());	
+		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")},"2");
+		assertEquals("2",h.getID());	
 	}
 	@Test
 	public void testNumberTwos(){	
