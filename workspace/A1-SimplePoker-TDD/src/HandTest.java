@@ -90,31 +90,25 @@ public class HandTest {
 	public void testHighCardRankTripleTie(){
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeSpades"),new Card("FiveClubs")});
 		Hand h2 = new Hand(new Card[]{new Card("TwoSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("FourHearts")});
-		String s = "";
-		String t = "";
-		for(int i=0; i<12;i++){
-			s += String.valueOf(h1.getCardArrayAtIndex(i+2));
-		}
-		
-		for(int i=11; i>-1;i--){
-			t += String.valueOf(h1.getCardArrayAtIndex(i+2));
-		}
-		/*for(int i=13; i<1;i++){
-			s += String.valueOf(h1.getCardArrayAtIndex(i));
-		}*/
-		System.out.println("Test forw: " + s);
-		System.out.println("Test back: " + t);
-		System.out.println(h1.getHighCardRank() + " " + h2.getHighCardRank());
 		assertEquals(2,h1.getHighCardRank());
 		assertEquals(3,h2.getHighCardRank());
 	}
-	/*@Test
-	public void testHighCardRankPairTie(){
+	@Test
+	public void testKicker(){
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
 		Hand h2 = new Hand(new Card[]{new Card("FourSpades"),new Card("FourSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("FourSpades")});
-		assertEquals(3,h1.getHighCardRank());
-		assertEquals(4,h2.getHighCardRank());
-	}*/
+		assertEquals(0,h1.getKicker());
+		assertEquals(0,h2.getKicker());
+	}
+	
+	@Test
+	public void testKicker2(){
+		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeSpades"),new Card("TwoSpades")});
+		Hand h2 = new Hand(new Card[]{new Card("AceSpades"),new Card("FourSpades"),new Card("FourSpades"),new Card("FourSpades"),new Card("FourSpades")});
+		
+		assertEquals(3,h1.getKicker());
+		assertEquals(14,h2.getKicker());
+	}
 	@Test
 	public void testSorted(){
 		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});

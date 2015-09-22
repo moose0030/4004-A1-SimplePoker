@@ -5,6 +5,7 @@ public class Hand implements Comparable<Hand>{
 	private int handRank = 0;
 	private int highCardRank =0;
 	private String id;
+	private int kicker;
 	
 	public Hand(Card[] c){
 		cards = c;
@@ -217,11 +218,28 @@ public class Hand implements Comparable<Hand>{
 
 	@Override
 	public int compareTo(Hand o){
+		//compare hand rank
 		int n = Integer.compare(o.handRank,this.handRank);
 		if(n == 0)
 		{
-			return Integer.compare(o.getHighCardRank(), this.getHighCardRank());
+			//compare hand high card rank
+			n = Integer.compare(o.getHighCardRank(), this.getHighCardRank());
+			if(n == 0){
+				//compare other high card
+				n = Integer.compare(o.getKicker(), this.getKicker());
+			
+			}
 		}
 		return n;
+	}
+
+	public int getKicker() {
+		for(int i=cardArray.length-1; i>0;i--){
+			if(cardArray[i] == 1){
+				kicker = i+2;
+				return kicker;
+			}
+		}
+		return 0;
 	}
 }

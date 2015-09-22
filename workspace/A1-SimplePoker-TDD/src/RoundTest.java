@@ -18,7 +18,8 @@ public class RoundTest {
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
 		Hand h2 = new Hand(new Card[]{new Card("TwoSpades"),new Card("AceSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("TwoSpades")});
 		Hand[] hs = new Hand[]{h1,h2};
-		assertEquals("1 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 3\n2 | null | TwoSpades AceSpades ThreeSpades ThreeSpades TwoSpades | Flush 5 14",r.betterHand(hs));	
+		//need to fix for straigh and flush
+		assertEquals("1 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 2\n2 | null | TwoSpades AceSpades ThreeSpades ThreeSpades TwoSpades | Flush 5 14",r.betterHand(hs));	
 	}
 	@Test
 	public void testBetterHandSameRank(){
@@ -26,9 +27,9 @@ public class RoundTest {
 		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
 		Hand h2 = new Hand(new Card[]{new Card("FourSpades"),new Card("FourSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("FourSpades")});
 		Hand[] hs = new Hand[]{h1,h2};
-		System.out.println(r.betterHand(hs));
-		System.out.println("1 | null | FourSpades FourSpades ThreeHearts ThreeSpades FourSpades | Full House 7 4\n2 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 3");
-		      assertEquals("1 | null | FourSpades FourSpades ThreeHearts ThreeSpades FourSpades | Full House 7 4\n2 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 3",r.betterHand(hs));	
+		//System.out.println(r.betterHand(hs));
+		//System.out.println("Test\n1 | null | FourSpades FourSpades ThreeHearts ThreeSpades FourSpades | Full House 7 4\n2 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 3");
+		      assertEquals("1 | null | FourSpades FourSpades ThreeHearts ThreeSpades FourSpades | Full House 7 4\n2 | null | TwoSpades TwoSpades ThreeHearts ThreeSpades TwoSpades | Full House 7 2",r.betterHand(hs));	
 	}
 
 }
