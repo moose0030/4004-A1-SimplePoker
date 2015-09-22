@@ -180,9 +180,29 @@ public class Hand implements Comparable<Hand>{
 	}
 
 	public int getHighCardRank(){	
-		for(int i=cardArray.length-1;i>0;i--)
+		String s = "";
+		for(int i=cardArray.length-2;i>-1;i--)
 		{
-			if(cardArray[i]!=0){
+			 s += String.valueOf(cardArray[i]);
+			if(cardArray[i] == 3){
+				highCardRank = (i+2);
+				return highCardRank;
+			}
+		}
+		System.out.println(s);
+		
+		for(int i=cardArray.length-2;i>-1;i--)
+		{
+			if(cardArray[i] == 2){
+				highCardRank = (i+2);
+				return highCardRank;
+			}
+			
+		}
+		
+		for(int i=cardArray.length-2;i>-1;i--)
+		{
+			if(cardArray[i] != 0){
 				highCardRank = (i+2);
 				return highCardRank;
 			}
