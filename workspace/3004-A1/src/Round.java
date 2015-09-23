@@ -13,7 +13,6 @@ public class Round {
 	public String betterHand(Hand[] hands){
 		Arrays.sort(hands);
 		String s = "";
-		//s += "Rank |    ID    |                     Hand                   |\n";
 		int i = 1;
 		for(Hand h: hands){
 			s += i + " | "+ h.getID() + " | " + h.getHand() + " | " + h.getPokerHand() + " " +h.getHandRank() + "\n";

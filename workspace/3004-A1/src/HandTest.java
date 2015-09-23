@@ -17,7 +17,7 @@ public class HandTest {
 	@Test
 	public void testNumberTwos(){	
 		Hand h = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades")});
-		assertEquals(5,h.getCardArrayAtIndex(2));
+		assertEquals(5,h.getCardArrayAtIndex(0));
 	}
 	@Test
 	public void testRoyalFlush(){
@@ -73,41 +73,6 @@ public class HandTest {
 	public void testOnePairRank(){
 		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
 		assertEquals(2,h.getHandRank());
-	}
-	@Test
-	public void testHighCardRank(){
-		Hand h = new Hand(new Card[]{new Card("TwoHearts"),new Card("TwoSpades"),new Card("EightSpades"),new Card("FiveHearts"),new Card("SixSpades")});
-		assertEquals(2,h.getHighCardRank());
-	}
-	@Test
-	public void testHighCardRank2(){
-		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
-		Hand h2 = new Hand(new Card[]{new Card("FourSpades"),new Card("FourSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("FourSpades")});
-		assertEquals(2,h1.getHighCardRank());
-		assertEquals(4,h2.getHighCardRank());
-	}
-	@Test
-	public void testHighCardRankTripleTie(){
-		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeSpades"),new Card("FiveClubs")});
-		Hand h2 = new Hand(new Card[]{new Card("TwoSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("ThreeSpades"),new Card("FourHearts")});
-		assertEquals(2,h1.getHighCardRank());
-		assertEquals(3,h2.getHighCardRank());
-	}
-	@Test
-	public void testKicker(){
-		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("TwoSpades")});
-		Hand h2 = new Hand(new Card[]{new Card("FourSpades"),new Card("FourSpades"),new Card("ThreeHearts"),new Card("ThreeSpades"),new Card("FourSpades")});
-		assertEquals(0,h1.getKicker());
-		assertEquals(0,h2.getKicker());
-	}
-	
-	@Test
-	public void testKicker2(){
-		Hand h1 = new Hand(new Card[]{new Card("TwoSpades"),new Card("TwoSpades"),new Card("TwoSpades"),new Card("ThreeSpades"),new Card("TwoSpades")});
-		Hand h2 = new Hand(new Card[]{new Card("AceSpades"),new Card("FourSpades"),new Card("FourSpades"),new Card("FourSpades"),new Card("FourSpades")});
-		
-		assertEquals(3,h1.getKicker());
-		assertEquals(14,h2.getKicker());
 	}
 	@Test
 	public void testSorted(){

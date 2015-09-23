@@ -3,9 +3,7 @@ public class Hand implements Comparable<Hand>{
 	private int[] cardArray= new int[13];
 	private Card[] cards;
 	private int handRank = 0;
-	private int highCardRank =0;
 	private String id;
-	private int kicker;
 	
 	public Hand(Card[] c){
 		cards = c;
@@ -40,8 +38,8 @@ public class Hand implements Comparable<Hand>{
 	
 	//Two is 0, Ace is 12
 	public int getCardArrayAtIndex(int n){
-		if(n>1 && n<(cardArray.length+3))
-		  return cardArray[n-2];
+		if(n>-1 && n<cardArray.length)
+		  return cardArray[n];
 		return 0;
 	}
 	
@@ -180,37 +178,7 @@ public class Hand implements Comparable<Hand>{
 		return handRank;
 	}
 
-	public int getHighCardRank(){	
-		String s = "";
-		for(int i=cardArray.length-2;i>-1;i--)
-		{
-			 s += String.valueOf(cardArray[i]);
-			if(cardArray[i] == 3){
-				highCardRank = (i+2);
-				return highCardRank;
-			}
-		}
-		System.out.println(s);
-		
-		for(int i=cardArray.length-2;i>-1;i--)
-		{
-			if(cardArray[i] == 2){
-				highCardRank = (i+2);
-				return highCardRank;
-			}
-			
-		}
-		
-		for(int i=cardArray.length-2;i>-1;i--)
-		{
-			if(cardArray[i] != 0){
-				highCardRank = (i+2);
-				return highCardRank;
-			}
-			
-		}
-		return 0;
-	}
+	
 	
 	public void sortCardsDesc(){
 		Arrays.sort(cards);
@@ -220,26 +188,30 @@ public class Hand implements Comparable<Hand>{
 	public int compareTo(Hand o){
 		//compare hand rank
 		int n = Integer.compare(o.handRank,this.handRank);
+		int n1=0,n2=0,oIndex=0,thisIndex = 0;
 		if(n == 0)
 		{
-			//compare hand high card rank
-			n = Integer.compare(o.getHighCardRank(), this.getHighCardRank());
-			if(n == 0){
-				//compare other high card
-				n = Integer.compare(o.getKicker(), this.getKicker());
+			//go through all cards
+			for(int c=4;c>1;c--){
+			for(int i=12; i>0;i--){
 			
+				oIndex = o.getCardArrayAtIndex(i);
+				thisIndex = this.getCardArrayAtIndex(i);
+			
+				if(oIndex == c){
+					n1 = oIndex;
+				}
+				if(thisIndex == c){
+					n2 = thisIndex;
+				}
+			
+			if(Integer.compare(n1,n2)!=0){
+				return Integer.compare(n1, n2);
 			}
+			}
+		}
+			
 		}
 		return n;
-	}
-
-	public int getKicker() {
-		for(int i=cardArray.length-1; i>0;i--){
-			if(cardArray[i] == 1){
-				kicker = i+2;
-				return kicker;
-			}
-		}
-		return 0;
 	}
 }
