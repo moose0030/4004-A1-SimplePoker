@@ -206,29 +206,29 @@ public class Hand implements Comparable<Hand> {
 			// go through all cards
 			for (int c = 4; c > 0; c--) {
 				for (int i = 12; i > -1; i--) {
-					
+
 					oIndex = o.getCardArrayAtIndex(i);
 					thisIndex = this.getCardArrayAtIndex(i);
-					//System.out.println(c + ": " + i);
+					// System.out.println(c + ": " + i);
 					if (oIndex == c) {
-						if(n1<i){
+						if (n1 < i) {
 							n1 = i;
-							System.out.println(c + " N1: "+n1);
+							System.out.println(c + " N1: " + n1);
 						}
 					}
 					if (thisIndex == c) {
-						if(n2<i){
+						if (n2 < i) {
 							n2 = i;
-							System.out.println(c + " N2 "+n2);
+							System.out.println(c + " N2 " + n2);
 						}
-					}	
+					}
 				}
 				if (Integer.compare(n1, n2) != 0) {
 					return Integer.compare(n1, n2);
 				}
 				n2 = 0;
 				n1 = 0;
-				
+
 			}
 			return 0;
 

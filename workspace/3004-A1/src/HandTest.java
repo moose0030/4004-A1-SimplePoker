@@ -109,7 +109,7 @@ public class HandTest {
 		h.sortCardsDesc();
 		assertEquals("EightSpades SixSpades FiveHearts TwoHearts TwoSpades One Pair", h.print());
 	}
-	
+
 	@Test
 	public void testCompareTo() {
 		Hand h = new Hand(new Card[] { new Card("TwoHearts"), new Card("TwoSpades"), new Card("TwoHearts"),
@@ -119,42 +119,46 @@ public class HandTest {
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
+
 	@Test
 	public void testCompareToFullHouse() {
 		Hand h = new Hand(new Card[] { new Card("TwoHearts"), new Card("TwoSpades"), new Card("SixSpades"),
 				new Card("SixSpades"), new Card("SixSpades") });
 		Hand o = new Hand(new Card[] { new Card("ThreeSpades"), new Card("ThreeSpades"), new Card("SixDiamonds"),
-				new Card("SixDiamonds"), new Card("SixDiamonds") });	
+				new Card("SixDiamonds"), new Card("SixDiamonds") });
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
+
 	public void testCompareToStraight() {
 		Hand h = new Hand(new Card[] { new Card("TwoHearts"), new Card("ThreeHearts"), new Card("FourDiamonds"),
 				new Card("FiveClubs"), new Card("SixSpades") });
 		Hand o = new Hand(new Card[] { new Card("SevenHearts"), new Card("ThreeHearts"), new Card("FourDiamonds"),
-				new Card("FiveClubs"), new Card("SixSpades") });	
+				new Card("FiveClubs"), new Card("SixSpades") });
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
+
 	@Test
 	public void testCompareTo4OAK() {
 		Hand h = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
 				new Card("KingClubs"), new Card("SixSpades") });
 		Hand o = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
-				new Card("JackClubs"), new Card("SixSpades") });	
+				new Card("JackClubs"), new Card("SixSpades") });
 		assertEquals(-1, h.compareTo(o));
 		assertEquals(1, o.compareTo(h));
 	}
-	
+
 	@Test
 	public void testCompareTo4OAK2() {
 		Hand h = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
 				new Card("JackClubs"), new Card("SixSpades") });
 		Hand o = new Hand(new Card[] { new Card("SevenSpades"), new Card("SevenSpades"), new Card("SevenSpades"),
-				new Card("JackClubs"), new Card("SevenSpades") });	
+				new Card("JackClubs"), new Card("SevenSpades") });
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
+
 	@Test
 	public void testCompareToRoyalFlushEq() {
 		Hand h = new Hand(new Card[] { new Card("AceClubs"), new Card("KingClubs"), new Card("TenClubs"),
