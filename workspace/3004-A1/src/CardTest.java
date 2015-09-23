@@ -21,5 +21,22 @@ public class CardTest {
 		Card c = new Card("TwoSpades");
 		assertEquals(2, c.getCardRank());
 	}
+	
+	public void checkCardValidity(){
+		Card c = new Card("TwoSpades");
+		assertEquals(true, c.checkCardValidity("TwoSpades"));
+	}
+	
+	public void checkCardValidity2(){
+		Card c = new Card("TwoSpiders");
+		assertEquals(false, c.checkCardValidity("TwoSpades"));
+	}
+	
+	public void checkCardValidity3(){
+		Card c = new Card("OneSpades");
+		assertEquals(false, c.checkCardValidity("TwoSpades"));
+	}
+	
+	
 
 }
