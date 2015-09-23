@@ -141,4 +141,32 @@ public class HandTest {
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
+	@Test
+	public void testCompareTo4OAK() {
+		Hand h = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
+				new Card("KingClubs"), new Card("SixSpades") });
+		Hand o = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
+				new Card("JackClubs"), new Card("SixSpades") });	
+		assertEquals(-1, h.compareTo(o));
+		assertEquals(1, o.compareTo(h));
+	}
+	
+	@Test
+	public void testCompareTo4OAK2() {
+		Hand h = new Hand(new Card[] { new Card("SixSpades"), new Card("SixSpades"), new Card("SixSpades"),
+				new Card("JackClubs"), new Card("SixSpades") });
+		Hand o = new Hand(new Card[] { new Card("SevenSpades"), new Card("SevenSpades"), new Card("SevenSpades"),
+				new Card("JackClubs"), new Card("SevenSpades") });	
+		assertEquals(1, h.compareTo(o));
+		assertEquals(-1, o.compareTo(h));
+	}
+	@Test
+	public void testCompareToRoyalFlushEq() {
+		Hand h = new Hand(new Card[] { new Card("AceClubs"), new Card("KingClubs"), new Card("TenClubs"),
+				new Card("JackClubs"), new Card("QueenClubs") });
+		Hand o = new Hand(new Card[] { new Card("AceClubs"), new Card("KingClubs"), new Card("TenClubs"),
+				new Card("JackClubs"), new Card("QueenClubs") });
+		assertEquals(0, h.compareTo(o));
+		assertEquals(0, o.compareTo(h));
+	}
 }
