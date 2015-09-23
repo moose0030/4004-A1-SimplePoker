@@ -112,15 +112,10 @@ public class HandTest {
 	
 	@Test
 	public void testCompareTo() {
-		Round r = new Round(2);
 		Hand h = new Hand(new Card[] { new Card("TwoHearts"), new Card("TwoSpades"), new Card("TwoHearts"),
 				new Card("TwoHearts"), new Card("SixSpades") });
 		Hand o = new Hand(new Card[] { new Card("TwoHearts"), new Card("TwoSpades"), new Card("TwoHearts"),
 				new Card("TwoHearts"), new Card("SevenSpades") });
-		//System.out.println("COMPARE TO");
-		//System.out.println("RESULT: " + h.compareTo(o));
-		Hand[] hs ={h,o};
-		//System.out.println(r.betterHand(hs));
 		assertEquals(1, h.compareTo(o));
 		assertEquals(-1, o.compareTo(h));
 	}
