@@ -87,13 +87,101 @@ public class Game {
 	public String getDeck(int i){
 		return deck[i];
 	}
-	public boolean verifyNewCard(String s) {return true;	}
+	public Card verifyNewCard(String s) {
+		String suit="";
+		String rank="";
+		int cardRank = 0;
+		String card= "";
+		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
+				"Queen", "King" };
+		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs" };
+		for (String w : ranks) {
+			int index = s.indexOf(w);
+			if (index >= 0) {
+				switch (w) {
+				case "Ace":
+					card += w;
+					cardRank = 13; 
+					break;
+				case "Two":
+					card += w;
+					cardRank = 2;
+					break;
+				case "Three":
+					card += w;
+					cardRank = 3;
+					break;
+				case "Four":
+					card += w;
+					cardRank = 4;
+					break;
+				case "Five":
+					card += w;
+					cardRank = 5;
+					break;
+				case "Six":
+					card += w;
+					cardRank = 6;
+					break;
+				case "Seven":
+					card += w;
+					cardRank = 7;
+					break;
+				case "Eight":
+					card += w;
+					cardRank = 8;
+					break;
+				case "Nine":
+					card += w;
+					cardRank = 9;
+					break;
+				case "Ten":
+					card += w;
+					cardRank = 10;
+					break;
+				case "Jack":
+					card += w;
+					cardRank = 11;
+					break;
+				case "Queen":
+					card += w;
+					cardRank = 12;
+					break;
+				case "King":
+					card += w;
+					cardRank = 13;
+					break;
+				default: return null;
+				}
+				rank = w;
+			}
+		}
+			for (String w : suits) {
+				int index = s.indexOf(w);
+				if (index >= 0) {
+					if(w.equals("Diamonds") || w.equals("Hearts") || w.equals("Clubs") || w.equals("Spades")){
+						card+=w;
+						if(isCardAvailable(card)){
+							return new Card(cardRank,rank, w);
+						}
+						return null;
+					}
+					else return null;
+					
+				}
+			}
+			return null;
+	}
 	
 	public boolean isCardAvailable(String s){
-		for(String card : deck){
-			if(card.equals(s)){
-				card = null;
+		for(int i=0; i<deck.length;i++)
+		{
+			
+			if(s.equals(deck[i])){
+
+				deck[i] = null;
 				return true;
+				
 			}
 		}
 		return false;

@@ -6,6 +6,13 @@ public class Card implements Comparable<Card> {
 	public Card(String s) {
 		boolean valid = checkCardValidity(s);
 	}
+	
+	public Card(int cr, String ra, String su){
+		cardRank = cr;
+		suit = su;
+		rank = ra;
+		
+	}
 
 	public boolean checkCardValidity(String t) {
 		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",

@@ -13,31 +13,37 @@ public class GameTest {
 		assertEquals("AceSpades",game.getDeck(0));
 	}
 	
-	/*@Test public void getTwoSameCards(){
-		String s ="TwoSpades";
-		boolean b = game.verifyNewCard(s);
-		b = game.verifyNewCard(s);
-		
-		assertEquals(false,b);
-	}*/
 	
 	@Test public void findCard(){
 		String s = "TwoSpades";
-		assertEquals(true,game.verifyNewCard(s));
+		assertEquals(true,game.isCardAvailable(s));
 	}
 	
 	@Test public void findCard2(){
-		String s = "TwoSpades";
-		game.verifyNewCard(s);
-		
-		assertEquals(false,game.verifyNewCard(s));
+		String s = "ThreeSpades";
+		game.isCardAvailable(s);
+		assertEquals(false,game.isCardAvailable(s));
 	}
 	
 	@Test public void findCard3(){
 		String s = "TwoSpdes";
-		assertEquals(true,game.verifyNewCard(s));
+		assertEquals(false,game.isCardAvailable(s));
 	}
 	
+	@Test public void verifyCard(){
+		String s = "JackHearts";
+		Card c = game.verifyNewCard(s);
+		assertEquals("Jack",c.getRank());
+		assertEquals("Hearts",c.getSuit());
+	}
+	
+	@Test public void getTwoSameCards(){
+		String s ="TwoSpades";
+		Card b = game.verifyNewCard(s);
+		b = game.verifyNewCard(s);
+	
+		assertEquals(null,b);
+	}
 	
 	
 	
