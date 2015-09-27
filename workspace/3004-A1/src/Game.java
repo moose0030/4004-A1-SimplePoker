@@ -8,6 +8,7 @@ public class Game {
 		prepareDeck();
 	}
 	public static void main(String[] args) {
+		Game game = new Game();
 		Scanner reader = new Scanner(System.in);
 		int num = getNumberOfPlayers(reader);
 		r = new Round(num);
@@ -35,8 +36,8 @@ public class Game {
 
 	private static void getIdAndCards(Scanner sc, int num) {
 		Scanner reader = sc;
+		String s = "";
 		for (int i = 0; i < num; i++) {
-			String s = "";
 			boolean correct = false;
 			while (!correct) {
 				correct = true;
@@ -44,10 +45,24 @@ public class Game {
 				while (s.equals("")) {
 					s = reader.nextLine();
 				}
+				
 				String[] split = s.split("\\s+");
 				try {
-					r.addPlayerHand(i, split[0], new Card[] { new Card(split[1]), new Card(split[2]),
-							new Card(split[3]), new Card(split[4]), new Card(split[5]) });
+					Card c1 = verifyNewCard(split[1]);
+					Card c2 = verifyNewCard(split[2]);
+					Card c3 = verifyNewCard(split[3]);
+					Card c4 = verifyNewCard(split[4]);
+					Card c5 = verifyNewCard(split[5]);
+					Card[] cs = new Card[]{c1,c2,c3,c4,c5};
+					if(c1 !=null && c2 !=null && c3 !=null && c4 !=null &&c5 !=null){
+						r.addPlayerHand(i, split[0], cs);
+					}
+					else{
+						System.out.println("Try that again");
+						i--;
+					}
+					s = "";
+					
 				} catch (ArrayIndexOutOfBoundsException aioobe) {
 					System.out.println("Try that again");
 					correct = false;
@@ -55,6 +70,7 @@ public class Game {
 				}
 			}
 		}
+		
 		System.out.println(r.betterHand(r.players));
 	}
 
@@ -87,21 +103,21 @@ public class Game {
 	public String getDeck(int i){
 		return deck[i];
 	}
-	public Card verifyNewCard(String s) {
+	public static Card verifyNewCard(String s) {
 		String suit="";
 		String rank="";
 		int cardRank = 0;
 		String card= "";
 		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
 				"Queen", "King" };
-		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs" };
+		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs"};
 		for (String w : ranks) {
 			int index = s.indexOf(w);
 			if (index >= 0) {
 				switch (w) {
 				case "Ace":
 					card += w;
-					cardRank = 13; 
+					cardRank = 14; 
 					break;
 				case "Two":
 					card += w;
@@ -173,7 +189,7 @@ public class Game {
 			return null;
 	}
 	
-	public boolean isCardAvailable(String s){
+	public static boolean isCardAvailable(String s){
 		for(int i=0; i<deck.length;i++)
 		{
 			

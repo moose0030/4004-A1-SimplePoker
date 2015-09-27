@@ -16,9 +16,11 @@ public class Hand implements Comparable<Hand> {
 
 	public Hand(Card[] c, String s) {
 		cards = c;
+		
 		id = s;
 		for (int i = 0; i < c.length; i++) {
-			cardArray[(c[i].getCardRank() - 2)]++;
+			cardArray[(cards[i].getCardRank() - 2)]++;
+			//System.out.println( "Hand:" + c[i].getRank());
 		}
 		calculateHand();
 	}
@@ -137,12 +139,14 @@ public class Hand implements Comparable<Hand> {
 		}
 		return false;
 	}
-
+	
 	private boolean isRoyalFlush() {
+		System.out.println(cardArray[12] + " "+ cardArray[11] + " "+ cardArray[10] + " "+ cardArray[9] + " "+ cardArray[8] + " "+ cards[0].getSuit() + cards[1].getSuit() + cards[2].getSuit() + cards[3].getSuit() + cards[4].getSuit());
 		if (cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1) {
 			if (cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit()
 					&& cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()) {
 				handRank = 10;
+				System.out.println("Royallll flussh");
 				return true;
 			}
 		}
