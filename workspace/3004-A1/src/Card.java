@@ -3,12 +3,11 @@ public class Card implements Comparable<Card> {
 	private String suit = "";
 	private String rank = "";
 
-	
-	public Card(int cr, String ra, String su){
+	public Card(int cr, String ra, String su) {
 		cardRank = cr;
 		suit = su;
 		rank = ra;
-		
+
 	}
 
 	public String getSuit() {

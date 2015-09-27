@@ -3,7 +3,8 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class CardTest {
-Game g = new Game();
+	Game g = new Game();
+
 	@Test
 	public void testRank() {
 		Card c = g.verifyNewCard("TwoSpades");
@@ -21,24 +22,21 @@ Game g = new Game();
 		Card c = g.verifyNewCard("TwoSpades");
 		assertEquals(2, c.getCardRank());
 	}
-	
-	public void checkCardValidity(){
+
+	public void checkCardValidity() {
 		assertEquals(true, g.verifyNewCard("TwoSpades"));
 	}
-	
-	public void checkCardValidity2(){
+
+	public void checkCardValidity2() {
 		Card c = g.verifyNewCard("TwoSpades");
 		assertEquals(false, g.verifyNewCard("TwoSpades"));
 	}
-	
-	public void checkCardValidity3(){
+
+	public void checkCardValidity3() {
 		assertEquals(null, g.verifyNewCard("TwoSpiders"));
 	}
-	
-	public void checkCardValidity4(){
+
+	public void checkCardValidity4() {
 		assertEquals(null, g.verifyNewCard("OneSpades"));
 	}
-	
-	
-
 }

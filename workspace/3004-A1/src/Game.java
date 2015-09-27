@@ -1,41 +1,41 @@
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Game {
 	static Round r;
 	static String[] deck = new String[52];
-
+	
 	public Game(){
 		prepareDeck();
 	}
+	
 	public static void main(String[] args) {
-		Game game = new Game();
-		Scanner reader = new Scanner(System.in);
-		int num = getNumberOfPlayers(reader);
+		
+		System.out.println("How many players are playing this round?");
+		int num = getNumberOfPlayers(System.in);
 		r = new Round(num);
 
 		boolean playAgain = true;
 		while (playAgain) {
 			playAgain = false;
-			getIdAndCards(reader, num);
-			playAgain = getPlayAgain(reader);
+			getIdAndCards(System.in, num);
+			playAgain = getPlayAgain(System.in);
 		}
-		reader.close();
 		System.out.println("Game Over");
 	}
 
-	private static int getNumberOfPlayers(Scanner s) {
-		System.out.println("How many players are playing this round?");
+	static int getNumberOfPlayers(InputStream is) {
 		int num = 0;
-		Scanner reader = s;
+		Scanner reader = new Scanner(is);
 		while (num < 2 || num > 4) {
 			num = reader.nextInt();
 		}
+		reader.close();
 		return num;
-
 	}
 
-	private static void getIdAndCards(Scanner sc, int num) {
-		Scanner reader = sc;
+	private static void getIdAndCards(InputStream is, int num) {
+		Scanner reader = new Scanner(is);
 		String s = "";
 		for (int i = 0; i < num; i++) {
 			boolean correct = false;
@@ -45,7 +45,7 @@ public class Game {
 				while (s.equals("")) {
 					s = reader.nextLine();
 				}
-				
+
 				String[] split = s.split("\\s+");
 				try {
 					Card c1 = verifyNewCard(split[1]);
@@ -53,16 +53,15 @@ public class Game {
 					Card c3 = verifyNewCard(split[3]);
 					Card c4 = verifyNewCard(split[4]);
 					Card c5 = verifyNewCard(split[5]);
-					Card[] cs = new Card[]{c1,c2,c3,c4,c5};
-					if(c1 !=null && c2 !=null && c3 !=null && c4 !=null &&c5 !=null){
+					Card[] cs = new Card[] { c1, c2, c3, c4, c5 };
+					if (c1 != null && c2 != null && c3 != null && c4 != null && c5 != null) {
 						r.addPlayerHand(i, split[0], cs);
-					}
-					else{
+					} else {
 						System.out.println("Try that again");
 						i--;
 					}
 					s = "";
-					
+
 				} catch (ArrayIndexOutOfBoundsException aioobe) {
 					System.out.println("Try that again");
 					correct = false;
@@ -70,27 +69,30 @@ public class Game {
 				}
 			}
 		}
-		
+		reader.close();
 		System.out.println(r.betterHand(r.players));
 	}
 
-	private static boolean getPlayAgain(Scanner s) {
-		Scanner reader = s;
+	private static boolean getPlayAgain(InputStream is) {
+		Scanner reader = new Scanner(is);
 		System.out.println("Would you like to play another round? y/n");
-		if (reader.nextLine().equals("y"))
+		if (reader.nextLine().equals("y")){
+			reader.close();
 			return true;
-		else
+		}
+		else{
+			reader.close();
 			return false;
+		}
 	}
-	
-	
 
-	private static void prepareDeck(){
-		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack","Queen", "King" };
+	private static void prepareDeck() {
+		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
+				"Queen", "King" };
 		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs" };
-		
+
 		int i = 0;
-		
+
 		for (String r : ranks) {
 			for (String s : suits) {
 				String c = r + s;
@@ -99,25 +101,26 @@ public class Game {
 			}
 		}
 	}
-	
-	public String getDeck(int i){
+
+	public String getDeck(int i) {
 		return deck[i];
 	}
+
 	public static Card verifyNewCard(String s) {
-		String suit="";
-		String rank="";
+		String suit = "";
+		String rank = "";
 		int cardRank = 0;
-		String card= "";
+		String card = "";
 		String[] ranks = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack",
 				"Queen", "King" };
-		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs"};
+		String[] suits = { "Spades", "Hearts", "Diamonds", "Clubs" };
 		for (String w : ranks) {
 			int index = s.indexOf(w);
 			if (index >= 0) {
 				switch (w) {
 				case "Ace":
 					card += w;
-					cardRank = 14; 
+					cardRank = 14;
 					break;
 				case "Two":
 					card += w;
@@ -167,40 +170,39 @@ public class Game {
 					card += w;
 					cardRank = 13;
 					break;
-				default: return null;
+				default:
+					return null;
 				}
 				rank = w;
 			}
 		}
-			for (String w : suits) {
-				int index = s.indexOf(w);
-				if (index >= 0) {
-					if(w.equals("Diamonds") || w.equals("Hearts") || w.equals("Clubs") || w.equals("Spades")){
-						card+=w;
-						if(isCardAvailable(card)){
-							return new Card(cardRank,rank, w);
-						}
-						return null;
+		for (String w : suits) {
+			int index = s.indexOf(w);
+			if (index >= 0) {
+				if (w.equals("Diamonds") || w.equals("Hearts") || w.equals("Clubs") || w.equals("Spades")) {
+					card += w;
+					if (isCardAvailable(card)) {
+						return new Card(cardRank, rank, w);
 					}
-					else return null;
-					
-				}
+					return null;
+				} else
+					return null;
+
 			}
-			return null;
+		}
+		return null;
 	}
-	
-	public static boolean isCardAvailable(String s){
-		for(int i=0; i<deck.length;i++)
-		{
-			
-			if(s.equals(deck[i])){
+
+	public static boolean isCardAvailable(String s) {
+		for (int i = 0; i < deck.length; i++) {
+			if (s.equals(deck[i])) {
 
 				deck[i] = null;
 				return true;
-				
+
 			}
 		}
 		return false;
-		
+
 	}
 }
