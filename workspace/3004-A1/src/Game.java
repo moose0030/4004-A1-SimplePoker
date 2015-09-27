@@ -30,7 +30,7 @@ public class Game {
 		while (num < 2 || num > 4) {
 			num = reader.nextInt();
 		}
-		reader.close();
+		//reader.close();
 		return num;
 	}
 
@@ -45,39 +45,48 @@ public class Game {
 				while (s.equals("")) {
 					s = reader.nextLine();
 				}
-
-				String[] split = s.split("\\s+");
-				try {
-					Card c1 = verifyNewCard(split[1]);
-					Card c2 = verifyNewCard(split[2]);
-					Card c3 = verifyNewCard(split[3]);
-					Card c4 = verifyNewCard(split[4]);
-					Card c5 = verifyNewCard(split[5]);
-					Card[] cs = new Card[] { c1, c2, c3, c4, c5 };
-					if (c1 != null && c2 != null && c3 != null && c4 != null && c5 != null) {
-						r.addPlayerHand(i, split[0], cs);
-					} else {
-						System.out.println("Try that again");
-						i--;
-					}
-					s = "";
-
-				} catch (ArrayIndexOutOfBoundsException aioobe) {
-					System.out.println("Try that again");
-					correct = false;
-					s = "";
+				correct = verifyIdAndCards(s,i);
+				if(correct){
+					s="";
 				}
+				else{
+					s="";
+					i--;
+				}
+				
 			}
 		}
 		reader.close();
 		System.out.println(r.betterHand(r.players));
 	}
 
+	static boolean verifyIdAndCards(String s, int i) {
+		String[] split = s.split("\\s+");
+		try {
+			Card c1 = verifyNewCard(split[1]);
+			Card c2 = verifyNewCard(split[2]);
+			Card c3 = verifyNewCard(split[3]);
+			Card c4 = verifyNewCard(split[4]);
+			Card c5 = verifyNewCard(split[5]);
+			Card[] cs = new Card[] { c1, c2, c3, c4, c5 };
+			if (c1 != null && c2 != null && c3 != null && c4 != null && c5 != null && split.length ==6) {
+				if(r!= null)
+					r.addPlayerHand(i, split[0], cs);
+				return true;
+			} else {
+				System.out.println("Try that again");
+				return false;
+			}
+		} catch (ArrayIndexOutOfBoundsException aioobe) {
+			System.out.println("Try that again");
+			return false;
+		}
+	}
+
 	private static boolean getPlayAgain(InputStream is) {
 		Scanner reader = new Scanner(is);
 		System.out.println("Would you like to play another round? y/n");
 		if (reader.nextLine().equals("y")){
-			reader.close();
 			return true;
 		}
 		else{

@@ -66,4 +66,22 @@ public class GameTest {
 		System.setIn(in);
 		assertEquals(4,game.getNumberOfPlayers(in));	
 	}
+	
+	@Test
+	public void verifyIdAndCardsCorrect(){
+	String s = "Jim TwoSpades ThreeSpades FourSpades FiveSpades SixSpades";
+	assertEquals(true,game.verifyIdAndCards(s, 0));
+	}
+	
+	@Test
+	public void verifyIdAndCardsTooMany(){
+	String s = "Jim TwoSpades ThreeSpades FourSpades FiveSpades SixSpades SevenSpades";
+	assertEquals(false,game.verifyIdAndCards(s, 0));
+	}
+	
+	@Test
+	public void verifyIdAndCardsWrong(){
+	String s = "Jim TwoSpades TheeSpades FourSpades FiveSpades SixSpades";
+	assertEquals(false,game.verifyIdAndCards(s, 0));
+	}
 }
