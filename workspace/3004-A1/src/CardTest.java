@@ -3,38 +3,40 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class CardTest {
-
+Game g = new Game();
 	@Test
 	public void testRank() {
-		Card c = new Card("TwoSpades");
+		Card c = g.verifyNewCard("TwoSpades");
 		assertEquals("Two", c.getRank());
 	}
 
 	@Test
 	public void testSuit() {
-		Card c = new Card("TwoSpades");
+		Card c = g.verifyNewCard("TwoSpades");
 		assertEquals("Spades", c.getSuit());
 	}
 
 	@Test
 	public void testCardRank() {
-		Card c = new Card("TwoSpades");
+		Card c = g.verifyNewCard("TwoSpades");
 		assertEquals(2, c.getCardRank());
 	}
 	
 	public void checkCardValidity(){
-		Card c = new Card("TwoSpades");
-		assertEquals(true, c.checkCardValidity("TwoSpades"));
+		assertEquals(true, g.verifyNewCard("TwoSpades"));
 	}
 	
 	public void checkCardValidity2(){
-		Card c = new Card("TwoSpiders");
-		assertEquals(false, c.checkCardValidity("TwoSpades"));
+		Card c = g.verifyNewCard("TwoSpades");
+		assertEquals(false, g.verifyNewCard("TwoSpades"));
 	}
 	
 	public void checkCardValidity3(){
-		Card c = new Card("OneSpades");
-		assertEquals(false, c.checkCardValidity("TwoSpades"));
+		assertEquals(null, g.verifyNewCard("TwoSpiders"));
+	}
+	
+	public void checkCardValidity4(){
+		assertEquals(null, g.verifyNewCard("OneSpades"));
 	}
 	
 	
