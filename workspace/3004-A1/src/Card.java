@@ -7,7 +7,6 @@ public class Card implements Comparable<Card> {
 		cardRank = cr;
 		suit = su;
 		rank = ra;
-
 	}
 
 	public String getSuit() {
