@@ -5,7 +5,16 @@ import org.junit.Test;
 public class RoundTest {
 	Game g = new Game();
 
-	
+	@Test
+	public void testNumberOfPlayersMax(){
+		Round r = new Round(4);
+		assertEquals(4,r.getPlayersSize());
+	}
+	@Test
+	public void testNumberOfPlayersMin(){
+		Round r = new Round(2);
+		assertEquals(2,r.getPlayersSize());
+	}
 	@Test
 	public void testAddPlayerHand() {
 		Round r = new Round(2);

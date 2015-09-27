@@ -42,4 +42,8 @@ public class Round {
 		s = s.trim();
 		return s;
 	}
+
+	public int getPlayersSize() {
+		return players.length;
+	}
 }
