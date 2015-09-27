@@ -231,4 +231,7 @@ public class Hand implements Comparable<Hand> {
 		}
 		return n;
 	}
+	public int getCardsSize(){
+		return cards.length;
+	}
 }

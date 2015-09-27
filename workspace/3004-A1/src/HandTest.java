@@ -161,4 +161,11 @@ public class HandTest {
 		assertEquals(0, h.compareTo(o));
 		assertEquals(0, o.compareTo(h));
 	}
+	
+	@Test
+	public void testGetCardsSize(){
+		Hand h = new Hand(new Card[] { g.verifyNewCard("AceHearts"), g.verifyNewCard("KingHearts"),
+				g.verifyNewCard("TenHearts"), g.verifyNewCard("JackHearts"), g.verifyNewCard("QueenHearts") });
+		assertEquals(5, h.getCardsSize());
+	}
 }
