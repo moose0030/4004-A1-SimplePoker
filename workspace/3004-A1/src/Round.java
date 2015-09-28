@@ -4,6 +4,7 @@ public class Round {
 	Hand[] players;
 
 	public Round(int n) {
+		System.out.println(n);
 		players = new Hand[n];
 	}
 
