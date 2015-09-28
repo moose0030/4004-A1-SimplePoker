@@ -25,7 +25,7 @@ public class HandTest {
 	public void testNumberTwos() {
 		Hand h = new Hand(new Card[] { g.verifyNewCard("TwoSpades"), g.verifyNewCard("TwoDiamonds"),
 				g.verifyNewCard("TwoHearts"), g.verifyNewCard("TwoClubs"), g.verifyNewCard("ThreeHearts") });
-		assertEquals(4, h.getCardArrayAtIndex(0));
+		assertEquals(4, h.getCardArrayAtIndex(1));
 	}
 
 	@Test
@@ -167,5 +167,29 @@ public class HandTest {
 		Hand h = new Hand(new Card[] { g.verifyNewCard("AceHearts"), g.verifyNewCard("KingHearts"),
 				g.verifyNewCard("TenHearts"), g.verifyNewCard("JackHearts"), g.verifyNewCard("QueenHearts") });
 		assertEquals(5, h.getCardsSize());
+	}
+	
+	@Test
+	public void testAllHandsRankings(){
+		Hand h1 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(13,"King","Spades"),new Card(12,"Queen","Spades"),new Card(11,"Jack","Spades"),new Card(10,"Ten","Spades")});
+		Hand h2 = new Hand(new Card[]{new Card(9,"Nine","Spades"),new Card(13,"King","Spades"),new Card(12,"Queen","Spades"),new Card(11,"Jack","Spades"),new Card(10,"Ten","Spades")});
+		Hand h3 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(14,"Ace","Diamonds"),new Card(14,"Ace","Clubs"),new Card(14,"Ace","Hearts"),new Card(10,"Ten","Spades")});
+		Hand h4 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(14,"Ace","Diamonds"),new Card(14,"Ace","Clubs"),new Card(13,"King","Hearts"),new Card(13,"King","Spades")});
+		Hand h5 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(14,"Ace","Diamonds"),new Card(14,"Ace","Clubs"),new Card(13,"King","Hearts"),new Card(12,"Queen","Spades")});
+		Hand h6 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(13,"King","Spades"),new Card(12,"Queen","Spades"),new Card(11,"Jack","Spades"),new Card(8,"Eight","Spades")});
+		Hand h7 = new Hand(new Card[]{new Card(9,"Nine","Diamonds"),new Card(13,"King","Spades"),new Card(12,"Queen","Spades"),new Card(11,"Jack","Spades"),new Card(10,"Ten","Spades")});
+		Hand h8 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(14,"Ace","Diamonds"),new Card(13,"King","Hearts"),new Card(13,"King","Spades"),new Card(12,"Queen","Spades")});
+		Hand h9 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(14,"Ace","Diamonds"),new Card(2,"Two","Hearts"),new Card(3,"Three","Spades"),new Card(12,"Queen","Spades")});
+		Hand h10 = new Hand(new Card[]{new Card(14,"Ace","Spades"),new Card(8,"Eight","Diamonds"),new Card(2,"Two","Hearts"),new Card(3,"Three","Spades"),new Card(12,"Queen","Spades")});
+		
+		assertEquals(-1,h1.compareTo(h2));
+		assertEquals(-1,h2.compareTo(h3));
+		assertEquals(-1,h3.compareTo(h4));
+		assertEquals(-1,h4.compareTo(h5));
+		assertEquals(-1,h5.compareTo(h6));
+		assertEquals(-1,h6.compareTo(h7));
+		assertEquals(-1,h7.compareTo(h8));
+		assertEquals(-1,h8.compareTo(h9));
+		assertEquals(-1,h9.compareTo(h10));
 	}
 }

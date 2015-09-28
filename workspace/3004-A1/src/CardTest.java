@@ -33,10 +33,10 @@ public class CardTest {
 	}
 
 	public void checkCardValidity3() {
-		assertEquals(null, g.verifyNewCard("TwoSpiders"));
+		assertEquals(false, g.verifyNewCard("TwoSpiders"));
 	}
 
 	public void checkCardValidity4() {
-		assertEquals(null, g.verifyNewCard("OneSpades"));
+		assertEquals(false, g.verifyNewCard("OneSpades"));
 	}
 }

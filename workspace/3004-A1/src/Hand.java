@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Hand implements Comparable<Hand> {
-	private int[] cardArray = new int[13];
+	private int[] cardArray = new int[14];
 	private Card[] cards;
 	private int handRank = 0;
 	private String id;
@@ -9,7 +9,10 @@ public class Hand implements Comparable<Hand> {
 	public Hand(Card[] c) {
 		cards = c;
 		for (int i = 0; i < c.length; i++) {
-			cardArray[(c[i].getCardRank() - 2)]++;
+			cardArray[(c[i].getCardRank() - 1)]++;
+			if((cards[i].getCardRank() - 1) == 13){
+				cardArray[0]++;
+			}
 		}
 		calculateHand();
 	}
@@ -18,7 +21,10 @@ public class Hand implements Comparable<Hand> {
 		cards = c;
 		id = s;
 		for (int i = 0; i < c.length; i++) {
-			cardArray[(cards[i].getCardRank() - 2)]++;
+			cardArray[(cards[i].getCardRank() - 1)]++;
+			if((cards[i].getCardRank() - 1) == 13){
+				cardArray[0]++;
+			}
 		}
 		calculateHand();
 	}
@@ -73,6 +79,10 @@ public class Hand implements Comparable<Hand> {
 			if (cardArray[i] == 2)
 				pairs++;
 			if (pairs == 2) {
+				if(cardArray[0]==2 && cardArray[13]==2){
+					handRank = 2;
+					return true;
+				}
 				handRank = 3;
 				return true;
 			}
@@ -139,7 +149,7 @@ public class Hand implements Comparable<Hand> {
 	}
 
 	private boolean isRoyalFlush() {
-		if (cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1 && cardArray[8] == 1) {
+		if (cardArray[13] == 1 && cardArray[12] == 1 && cardArray[11] == 1 && cardArray[10] == 1 && cardArray[9] == 1) {
 			if (cards[0].getSuit() == cards[1].getSuit() && cards[0].getSuit() == cards[2].getSuit()
 					&& cards[0].getSuit() == cards[3].getSuit() && cards[0].getSuit() == cards[4].getSuit()) {
 				handRank = 10;

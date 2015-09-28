@@ -67,7 +67,6 @@ public class Game {
 			Card c4 = verifyNewCard(split[4]);
 			Card c5 = verifyNewCard(split[5]);
 			Card[] cs = new Card[] { c1, c2, c3, c4, c5 };
-			System.out.println("" + (c1 == null) + (c2 == null) + (c3 == null) + (c4 == null) + (c5 == null) + (r != null));
 			if (c1 != null && c2 != null && c3 != null && c4 != null && c5 != null && split.length ==6) {
 				if(r!= null)
 					r.addPlayerHand(i, split[0], cs);
@@ -209,6 +208,6 @@ public class Game {
 				return true;
 			}
 		}
-		return false;
+		return false; 
 	}
 }
